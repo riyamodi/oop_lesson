@@ -24,7 +24,7 @@ class Gem(GameElement):
 
     def interact(self, player):
         player.inventory.append(self)
-        GAME_BOARD.draw_msg("You just acquired a gem!")
+        GAME_BOARD.draw_msg("You just acquired a gem! You have %d items!" % (len(player.inventory)))
 
 class Character(GameElement):
     IMAGE = "Cat"
