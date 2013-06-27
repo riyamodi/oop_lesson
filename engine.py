@@ -4,9 +4,8 @@ import pyglet
 from pyglet.window import key
 from core import GameElement
 
-SCREEN_X = 800
-SCREEN_Y = 700
-
+SCREEN_X = 1000
+SCREEN_Y = 1000
 game_window = pyglet.window.Window(SCREEN_X, SCREEN_Y)
 
 pyglet.resource.path = ["images/"]
@@ -14,7 +13,7 @@ pyglet.resource.reindex()
 
 # Custom student changes
 import game
-
+game.WINDOW = game_window
 IMAGES = {}
 TILE_WIDTH = 0
 TILE_HEIGHT = 0
@@ -41,7 +40,8 @@ def setup_images():
             "Horns": "Character Horn Girl.png",
             "Girl": "Character Pink Girl.png",
             "Princess": "Character Princess Girl.png",
-            "Bridge": "SF.png"
+            "Bridge": "SF.png",
+            "Christian" : "czf.png",
             }
 
     for k,v in filenames.items():
@@ -126,9 +126,11 @@ class Board(object):
 
     def check_bounds(self, x, y):
         if not (0 <= x < self.width):
-            raise IndexError("%r is out of bounds of the board width: %d"%(x, self.width))
+            print ("You're out of bounds of the game.")
+            # raise IndexError("%r is out of bounds of the board width: %d"%(x, self.width))
         if not (0 <= y < self.height):
-            raise IndexError("%r is out of bounds of the board height: %d"%(y, self.width))
+            print ("Stop. You can go no further.")
+            # raise IndexError("%r is out of bounds of the board height: %d"%(y, self.width))
 
     def get_el(self, x, y):
         self.check_bounds(x, y)
@@ -170,6 +172,7 @@ class Board(object):
 
 class Obstacle(GameElement):
     pass
+
 
 def update(dt):
     for el in update_list:
