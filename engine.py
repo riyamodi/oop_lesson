@@ -199,6 +199,8 @@ def run():
         
     game.GAME_BOARD = board
 
+    print "GAME BOARD CREATEDDD!!!!"
+
     """
     try:
         board.register(player)

@@ -16,6 +16,8 @@ GAME_WIDTH = 10
 GAME_HEIGHT = 10
 
 #### Put class definitions here ####
+
+
 class Wall(GameElement):
 	IMAGE = "Wall"
 	SOLID = True
@@ -127,7 +129,7 @@ class Door_Reset_Player(GameElement):
 
 	def interact(self, player):
 		
-		if len(player.inventory) == 4:
+		if len(player.inventory) == 5:
 			print "beginning of if statement"
 			magician = Magic()
 			GAME_BOARD.register(magician)
@@ -138,6 +140,10 @@ class Door_Reset_Player(GameElement):
 			GAME_BOARD.del_el(self.x, self.y)
 			GAME_BOARD.draw_msg("You went through a door!")
 			Wall.SOLID = False
+	
+			
+
+
 			# self.on_key_press(symbol, modifiers)
 			# WINDOW.clear()
 			# joke = raw_input(">>>>>>> ")
@@ -169,7 +175,10 @@ def initialize():
 			(GAME_WIDTH - 4, GAME_HEIGHT - 8),
 			(GAME_WIDTH - 3, GAME_HEIGHT - 8),
 			(GAME_WIDTH - 2, GAME_HEIGHT - 8),
-			(GAME_WIDTH - 1, GAME_HEIGHT - 8)
+			(GAME_WIDTH - 1, GAME_HEIGHT - 8),
+			(GAME_WIDTH - 10, GAME_HEIGHT - 9),
+			(GAME_WIDTH - 10, GAME_HEIGHT - 10)
+
 	]
 
 	rock_positions = [
@@ -222,7 +231,8 @@ def initialize():
 		(GAME_WIDTH - 2, GAME_HEIGHT - 7),
 		(GAME_WIDTH - 5, GAME_HEIGHT - 2),
 		(GAME_WIDTH -4, GAME_HEIGHT -6),
-		(GAME_WIDTH - 7, GAME_HEIGHT - 4)
+		(GAME_WIDTH - 7, GAME_HEIGHT - 4),
+		(GAME_WIDTH - 2, GAME_HEIGHT - 9)
 	]
 
 	gems = []
@@ -241,6 +251,8 @@ def initialize():
 	door = Door_Reset_Player()
 	GAME_BOARD.register(door)
 	GAME_BOARD.set_el(GAME_WIDTH-2, GAME_HEIGHT - 2, door)
+
+	return wall_positions
 
 
 def keyboard_handler():
